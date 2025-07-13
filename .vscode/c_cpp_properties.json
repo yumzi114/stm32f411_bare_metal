@@ -1,0 +1,44 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "/home/yum/eomi_codes/STM_BARE_MERAL/blackpill_f411_project/include",
+                "/home/yum/eomi_codes/STM_BARE_MERAL/blackpill_f411_project/src",
+                "/home/yum/.platformio/packages/framework-cmsis@2.50501.200527/CMSIS/Include",
+                "/home/yum/.platformio/packages/framework-cmsis-stm32f4/Include",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/home/yum/eomi_codes/STM_BARE_MERAL/blackpill_f411_project/include",
+                    "/home/yum/eomi_codes/STM_BARE_MERAL/blackpill_f411_project/src",
+                    "/home/yum/.platformio/packages/framework-cmsis@2.50501.200527/CMSIS/Include",
+                    "/home/yum/.platformio/packages/framework-cmsis-stm32f4/Include",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60118",
+                "STM32F4",
+                "STM32F4xx",
+                "STM32F411xE",
+                "F_CPU=100000000L",
+                ""
+            ],
+            "compilerPath": "/home/yum/.platformio/packages/toolchain-gccarmnoneeabi@1.70201.0/bin/arm-none-eabi-gcc",
+            "compilerArgs": [
+                "-mthumb",
+                "-mcpu=cortex-m4",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
