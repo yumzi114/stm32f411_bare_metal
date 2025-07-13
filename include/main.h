@@ -5,7 +5,7 @@
 
 #include <stdint.h>
 #include "mcu.h"
-
+#include "SEGGER_RTT.h"
 
 
 #endif /* __MAIN_H */

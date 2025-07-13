@@ -18,3 +18,4 @@ or
 framework = cmsis
 
 pio run -t upload
+
