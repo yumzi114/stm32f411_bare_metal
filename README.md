@@ -5,12 +5,12 @@ platformio project init --board blackpill_f411ce
 
  ini file chage
 
-[env:blackpill_f411ce]
-platform = ststm32
-board = blackpill_f411ce
-framework = libopencm3
-debug_tool = jlink
-upload_protocol = jlink
+[env:blackpill_f411ce]<br/>
+platform = ststm32<br/>
+board = blackpill_f411ce<br/>
+framework = libopencm3<br/>
+debug_tool = jlink<br/>
+upload_protocol = jlink<br/>
 
 
 or
