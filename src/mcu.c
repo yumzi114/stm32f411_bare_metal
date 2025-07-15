@@ -10,12 +10,14 @@ void default_init(){
   RCC_AHB1_ENR |= GPIOBEN;
   //GPIOC ENABLE
   RCC_AHB1_ENR |= GPIOCEN;
-  //PC13 INPUT OUTPUT CLEAER
+  //PC13 OUTPUT CLEAER
   GPIOC_MODER &= ~(0x3 << (13 * 2));
   GPIOC_MODER |=  (0x1 << (13 * 2));
-  //TIM1 ENABLE
-  APB2_ENR |= (1 << 0);
-  //USART1 ENABLE
-  APB2_ENR |= (1 << 4);
-  GPIOC_OTYPER &= ~(1 << 13); // Push-pull (0)
+  //PA8 INPUT CLEAER
+  GPIOA_MODER &= ~(0x3 << (8 * 2));
+  GPIOA_MODER |=  (0x0 << (8 * 2));
+  //PA8 PULLUP
+  GPIOA_PUPDR &= ~(0x3 << (8 * 2));
+  GPIOA_PUPDR |=  (0x1 << (8 * 2));
+  
 }
