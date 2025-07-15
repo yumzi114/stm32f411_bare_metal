@@ -1,15 +1,14 @@
 #ifndef __MCU_H
 #define __MCU_H
 #include "main.h"
-#define SYSCLK_HZ      16000000UL
+#define USART1_CLK_HZ      100000000UL
 
 
-#define AHB1_RCC_BASE      (0x40023800UL)
+#define RCC_BASE      (0x40023800UL)
 #define GPIOA_BASE   (0x40020000UL)
 #define GPIOB_BASE   (0x40020400UL)
 #define GPIO_C_BASE   (0x40020800UL)
 #define APB2_BASE   (0x40010000UL)
-#define RCC_BASE   (0x40023800UL)
 //OFFSET
 #define RCC_AHB1_CLOCK_OFFSET (0x30)
 #define RCC_APB2_CLOCK_OFFSET (0x44)
@@ -17,7 +16,11 @@
 #define TIM1_OFFSET (0x00000000UL)
 
 //SET define
-#define RCC_AHB1_ENR (*(volatile uint32_t *)(AHB1_RCC_BASE+RCC_AHB1_CLOCK_OFFSET)) 
+#define RCC_AHB1_ENR (*(volatile uint32_t *)(RCC_BASE+RCC_AHB1_CLOCK_OFFSET)) 
+#define RCC_CR       (*(volatile uint32_t *)(RCC_BASE+0x00)) 
+#define RCC_PLLCFGR   (*(volatile uint32_t *)(RCC_BASE + 0x04))
+#define RCC_CFGR      (*(volatile uint32_t *)(RCC_BASE + 0x08))
+
 
 #define GPIOA_MODER  (*(volatile uint32_t *)(GPIOA_BASE + 0x00))
 #define GPIOA_OTYPER (*(volatile uint32_t *)(GPIOA_BASE + 0x04))

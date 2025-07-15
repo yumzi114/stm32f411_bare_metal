@@ -13,6 +13,10 @@ void default_init(){
   //PC13 OUTPUT CLEAER
   GPIOC_MODER &= ~(0x3 << (13 * 2));
   GPIOC_MODER |=  (0x1 << (13 * 2));
+  
+  GPIOC_ODR |= (1 << 13);
+
+
   //PA8 INPUT CLEAER
   GPIOA_MODER &= ~(0x3 << (8 * 2));
   GPIOA_MODER |=  (0x0 << (8 * 2));

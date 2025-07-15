@@ -8,4 +8,5 @@
 #include "uart.h"
 #include "i2c.h"
 #include "gpi2c.h"
+#include "clock.h"
 #endif /* __MAIN_H */
