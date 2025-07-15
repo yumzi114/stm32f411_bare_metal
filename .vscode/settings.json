@@ -2,6 +2,7 @@
     "files.associations": {
         "rcc.h": "c",
         "mcu.h": "c",
-        "main.h": "c"
+        "main.h": "c",
+        "uart.h": "c"
     }
 }
