@@ -4,6 +4,7 @@
 #define __MAIN_H
 
 #include <stdint.h>
+#include <stdio.h>
 #include "mcu.h"
 #include "uart.h"
 #include "i2c.h"

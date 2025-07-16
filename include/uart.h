@@ -3,7 +3,7 @@
 #include "main.h"
 #define USART_BRR_VAL(fclk, baud)   (((fclk) + ((baud)/2U)) / (baud))
 #define USART1_BAUD    115200U
-#define USART1_BRR_115200_16MHZ  USART_BRR_VAL(USART1_CLK_HZ, USART1_BAUD)
+#define USART1_BRR_115200_16MHZ  USART_BRR_VAL(APB2_CLK_HZ, USART1_BAUD)
 #define USART_BASE   (0x40011000UL)
 //OFF SET
 #define SR   (0x00)

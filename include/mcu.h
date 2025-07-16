@@ -1,7 +1,7 @@
 #ifndef __MCU_H
 #define __MCU_H
 #include "main.h"
-#define USART1_CLK_HZ      100000000UL
+#define APB2_CLK_HZ      100000000UL
 
 
 #define RCC_BASE      (0x40023800UL)
@@ -12,11 +12,13 @@
 //OFFSET
 #define RCC_AHB1_CLOCK_OFFSET (0x30)
 #define RCC_APB2_CLOCK_OFFSET (0x44)
+#define RCC_APB1_CLOCK_OFFSET (0x40)
 
 #define TIM1_OFFSET (0x00000000UL)
 
 //SET define
 #define RCC_AHB1_ENR (*(volatile uint32_t *)(RCC_BASE+RCC_AHB1_CLOCK_OFFSET)) 
+
 #define RCC_CR       (*(volatile uint32_t *)(RCC_BASE+0x00)) 
 #define RCC_PLLCFGR   (*(volatile uint32_t *)(RCC_BASE + 0x04))
 #define RCC_CFGR      (*(volatile uint32_t *)(RCC_BASE + 0x08))
@@ -36,6 +38,11 @@
 #define GPIOB_PUPDR   (*(volatile uint32_t *)(GPIOB_BASE + 0x00))
 #define GPIOB_IDR     (*(volatile uint32_t *)(GPIOB_BASE + 0x10))
 #define GPIOB_ODR     (*(volatile uint32_t *)(GPIOB_BASE + 0x14))
+#define GPIOB_OSPEEDR    (*(volatile uint32_t *)(GPIOB_BASE + 0x08))
+#define GPIOB_AF_0    (*(volatile uint32_t *)(GPIOB_BASE + 0x20))
+#define GPIOB_AF_1    (*(volatile uint32_t *)(GPIOB_BASE + 0x24))
+
+
 
 #define GPIOC_MODER   (*(volatile uint32_t *)(GPIO_C_BASE + 0x00))
 #define GPIOC_OTYPER  (*(volatile uint32_t *)(GPIO_C_BASE + 0x04))
@@ -45,6 +52,7 @@
 #define GPIOC_ODR     (*(volatile uint32_t *)(GPIO_C_BASE + 0x14))
 
 #define APB2_ENR (*(volatile uint32_t *)(RCC_BASE+RCC_APB2_CLOCK_OFFSET)) 
+#define APB1_ENR (*(volatile uint32_t *)(RCC_BASE+RCC_APB1_CLOCK_OFFSET)) 
 
 
 // DMA2 0x4002 6400
