@@ -19,3 +19,4 @@ framework = cmsis
 
 pio run -t upload
 
+pio debug --interface=gdb
