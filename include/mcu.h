@@ -1,81 +1,54 @@
 #ifndef __MCU_H
 #define __MCU_H
 #include "main.h"
-#define APB2_CLK_HZ      100000000UL
 
-
+typedef struct {
+    volatile uint32_t CR;          // 0x00
+    volatile uint32_t PLLCFGR;     // 0x04
+    volatile uint32_t CFGR;        // 0x08
+    volatile uint32_t CIR;         // 0x0C
+    volatile uint32_t AHB1RSTR;    // 0x10
+    volatile uint32_t AHB2RSTR;    // 0x14
+    volatile uint32_t AHB3RSTR;    // 0x18
+    uint32_t RESERVED0;            // 0x1C
+    volatile uint32_t APB1RSTR;    // 0x20
+    volatile uint32_t APB2RSTR;    // 0x24
+    uint32_t RESERVED1[2];         // 0x28, 0x2C
+    volatile uint32_t AHB1ENR;     // 0x30
+    volatile uint32_t AHB2ENR;     // 0x34
+    volatile uint32_t AHB3ENR;     // 0x38
+    uint32_t RESERVED2;            // 0x3C
+    volatile uint32_t APB1ENR;     // 0x40
+    volatile uint32_t APB2ENR;     // 0x44
+} RCC_TypeDef;
+typedef struct {
+    volatile uint32_t MODER;    
+    volatile uint32_t OTYPER;   
+    volatile uint32_t OSPEEDR;  
+    volatile uint32_t PUPDR;    
+    volatile uint32_t IDR;      
+    volatile uint32_t ODR;     
+    volatile uint32_t BSRR;    
+    volatile uint32_t LCKR;    
+    volatile uint32_t AFR[2];
+} GPIO_TypeDef;
 #define RCC_BASE      (0x40023800UL)
-#define GPIOA_BASE   (0x40020000UL)
-#define GPIOB_BASE   (0x40020400UL)
-#define GPIO_C_BASE   (0x40020800UL)
-#define APB2_BASE   (0x40010000UL)
-//OFFSET
-#define RCC_AHB1_CLOCK_OFFSET (0x30)
-#define RCC_APB2_CLOCK_OFFSET (0x44)
-#define RCC_APB1_CLOCK_OFFSET (0x40)
+#define GPIOA_BASE    (0x40020000UL)
+#define GPIOB_BASE    (0x40020400UL)
+#define GPIOC_BASE    (0x40020800UL)
 
-#define TIM1_OFFSET (0x00000000UL)
-
-//SET define
-#define RCC_AHB1_ENR (*(volatile uint32_t *)(RCC_BASE+RCC_AHB1_CLOCK_OFFSET)) 
-
-#define RCC_CR       (*(volatile uint32_t *)(RCC_BASE+0x00)) 
-#define RCC_PLLCFGR   (*(volatile uint32_t *)(RCC_BASE + 0x04))
-#define RCC_CFGR      (*(volatile uint32_t *)(RCC_BASE + 0x08))
-
-
-#define GPIOA_MODER  (*(volatile uint32_t *)(GPIOA_BASE + 0x00))
-#define GPIOA_OTYPER (*(volatile uint32_t *)(GPIOA_BASE + 0x04))
-#define GPIOA_PUPDR  (*(volatile uint32_t *)(GPIOA_BASE + 0x0C))
-#define GPIOA_IDR    (*(volatile uint32_t *)(GPIOA_BASE + 0x10))
-#define GPIOA_ODR    (*(volatile uint32_t *)(GPIOA_BASE + 0x14))
-#define GPIOA_OSPEEDR    (*(volatile uint32_t *)(GPIOA_BASE + 0x08))
-#define GPIOA_AF_0    (*(volatile uint32_t *)(GPIOA_BASE + 0x20))
-#define GPIOA_AF_1    (*(volatile uint32_t *)(GPIOA_BASE + 0x24))
-
-#define GPIOB_MODER   (*(volatile uint32_t *)(GPIOB_BASE + 0x00))
-#define GPIOB_OTYPER   (*(volatile uint32_t *)(GPIOB_BASE + 0x00))
-#define GPIOB_PUPDR   (*(volatile uint32_t *)(GPIOB_BASE + 0x00))
-#define GPIOB_IDR     (*(volatile uint32_t *)(GPIOB_BASE + 0x10))
-#define GPIOB_ODR     (*(volatile uint32_t *)(GPIOB_BASE + 0x14))
-#define GPIOB_OSPEEDR    (*(volatile uint32_t *)(GPIOB_BASE + 0x08))
-#define GPIOB_AF_0    (*(volatile uint32_t *)(GPIOB_BASE + 0x20))
-#define GPIOB_AF_1    (*(volatile uint32_t *)(GPIOB_BASE + 0x24))
-
-
-
-#define GPIOC_MODER   (*(volatile uint32_t *)(GPIO_C_BASE + 0x00))
-#define GPIOC_OTYPER  (*(volatile uint32_t *)(GPIO_C_BASE + 0x04))
-#define GPIOC_OSPEEDR (*(volatile uint32_t *)(GPIO_C_BASE + 0x08))
-#define GPIOC_PUPDR   (*(volatile uint32_t *)(GPIO_C_BASE + 0x0C))
-#define GPIOC_IDR     (*(volatile uint32_t *)(GPIO_C_BASE + 0x10))
-#define GPIOC_ODR     (*(volatile uint32_t *)(GPIO_C_BASE + 0x14))
-
-#define APB2_ENR (*(volatile uint32_t *)(RCC_BASE+RCC_APB2_CLOCK_OFFSET)) 
-#define APB1_ENR (*(volatile uint32_t *)(RCC_BASE+RCC_APB1_CLOCK_OFFSET)) 
-
-
-// DMA2 0x4002 6400
-// APB2 clock 0x44 (bit4 : USART, bit0 TIM1)
-// APB2 USART1 0x4001 1000
-// APB2 TIM1 0x4001 0000  
-
-// 0x4002 0800 - 0x4002 0BFF
-// 0x4002 6000 - 0x4002 63FF DMA1
-//
-//
-// Reset REG
-// Address offset: 0x10
-// Reset value: 0x0000 0000
-//
-// Clock ENABLE
-// Address offset: 0x30
-// Reset value: 0x0000 0000
-// RCC MEM
-// 0x4002 3800
-#define GPIOA_PIN8   ((GPIOA_IDR >> 8) & 0x1)
-
-
+#define PWR_BASE             (0x40007000UL)
+#define POWER_CONTROL_OFFSET (0x00)
+#define FLASH_ACR   (*(volatile uint32_t *)(0x40023C00))
+#define PWR_CR  (*(volatile uint32_t *)(PWR_BASE + POWER_CONTROL_OFFSET))
+#define GPIOA ((GPIO_TypeDef *) GPIOA_BASE)
+#define GPIOB ((GPIO_TypeDef *) GPIOB_BASE)
+#define GPIOC ((GPIO_TypeDef *) GPIOC_BASE)
+#define RCC   ((RCC_TypeDef *) RCC_BASE)
+// #define LED (GPIOC->ODR)
 void default_init();
+void clock_AHB1_100MHz_APB1_50MHz(void);
 #endif
+
+
 
